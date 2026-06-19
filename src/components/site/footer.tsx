@@ -278,7 +278,7 @@ export function Footer() {
                 href="https://wa.me/917222999342"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-bold text-ink hover:opacity-90 transition-opacity"
+                className="mt-4 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-bold text-ink border-2 border-lime shadow-[0_0_0_3px_color-mix(in_oklch,var(--lime)_25%,transparent),0_8px_24px_-8px_color-mix(in_oklch,var(--lime)_60%,transparent)] hover:shadow-[0_0_0_5px_color-mix(in_oklch,var(--lime)_35%,transparent),0_12px_32px_-8px_color-mix(in_oklch,var(--lime)_75%,transparent)] hover:-translate-y-0.5 transition-all"
               >
                 <MessageCircle className="h-4 w-4" />
                 Message us on WhatsApp
