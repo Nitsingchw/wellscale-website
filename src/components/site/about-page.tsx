@@ -17,7 +17,7 @@ import { AnimatedNumber, parseStatString } from "@/components/animated-number";
 import { useContactForm, type Route } from "./router";
 
 const STATS = [
-  { icon: Users, value: "40+", label: "Clinics scaled" },
+  { icon: Users, value: "20+", label: "Clinics scaled" },
   { icon: TrendingUp, value: "8X", label: "Max revenue growth" },
   { icon: Award, value: "100%", label: "Performance-based" },
   { icon: Activity, value: "30 days", label: "Average turnaround" },
@@ -64,7 +64,7 @@ const TIMELINE = [
   },
   {
     year: "2024 — Today",
-    title: "40+ clinics and counting",
+    title: "20+ clinics and counting",
     body: "We're now a 14-person team working exclusively with aesthetic clinics across India. We turn away non-clinic clients so we can stay deep in this one vertical.",
   },
 ];
@@ -164,7 +164,7 @@ export function AboutPage({ currentRoute }: { currentRoute: Route }) {
                 </p>
                 <p>
                   Three years later, that&apos;s still the only offer we make. We
-                  work with 40+ aesthetic clinics across India, we&apos;ve
+                  work with 20+ aesthetic clinics across India, we&apos;ve
                   scaled some of them 8X, and we still turn away every client
                   who isn&apos;t a clinic — because being specialists is what
                   makes the system work.

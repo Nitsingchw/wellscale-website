@@ -141,7 +141,7 @@ export function MetricsSection() {
         >
           {[
             { icon: IndianRupee, value: "₹20L+", label: "monthly ad spend managed" },
-            { icon: Users, value: "40+", label: "aesthetic clinics scaled" },
+            { icon: Users, value: "20+", label: "aesthetic clinics scaled" },
             { icon: Target, value: "4.2X", label: "average return on ad spend" },
           ].map(({ icon: Icon, value, label }) => {
             const parsed = parseStatString(value);

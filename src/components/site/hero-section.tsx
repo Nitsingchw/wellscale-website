@@ -347,7 +347,7 @@ export function HeroSection() {
                       Clinics
                     </div>
                     <p className="mt-1 text-lg font-extrabold text-lime tabular-nums">
-                      <AnimatedNumber value={40} suffix="+" />
+                      <AnimatedNumber value={20} suffix="+" />
                     </p>
                   </div>
                 </div>
@@ -407,7 +407,7 @@ export function HeroSection() {
                   ))}
                 </div>
                 <span className="text-[11px] font-bold text-lime tabular-nums">
-                  <AnimatedNumber value={40} suffix="+" /> clinics
+                  <AnimatedNumber value={20} suffix="+" /> clinics
                 </span>
               </motion.div>
             </motion.div>

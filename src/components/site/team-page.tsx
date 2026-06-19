@@ -41,7 +41,7 @@ const TEAM: Member[] = [
   {
     name: "Rohan Desai",
     role: "Head of Performance Ads",
-    bio: "Manages ₹20L+ in monthly ad spend across 40+ clinic accounts. Obsessed with lead quality over lead volume. Will pause a winning campaign if the consultation rate dips.",
+    bio: "Manages ₹20L+ in monthly ad spend across 20+ clinic accounts. Obsessed with lead quality over lead volume. Will pause a winning campaign if the consultation rate dips.",
     photo: "/team/member-3.jpg",
     focus: ["Meta Ads", "Lead Quality", "ROAS"],
   },
@@ -71,7 +71,7 @@ const TEAM: Member[] = [
 const STATS = [
   { icon: Users, value: "6", label: "Core team members" },
   { icon: Target, value: "1", label: "Vertical — aesthetic clinics only" },
-  { icon: TrendingUp, value: "40+", label: "Clinics partnered" },
+  { icon: TrendingUp, value: "20+", label: "Clinics partnered" },
   { icon: TrendingUp, value: "8X", label: "Max revenue scaled" },
 ];
 

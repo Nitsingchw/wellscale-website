@@ -93,7 +93,7 @@ export function CreativeTeamSection() {
               <div className="h-8 w-px bg-white/10" />
               <div className="inline-flex items-center gap-2">
                 <span className="text-2xl font-extrabold text-lime tabular-nums">
-                  <AnimatedNumber value={40} suffix="+" />
+                  <AnimatedNumber value={20} suffix="+" />
                 </span>
                 <span className="text-white/60">clinics partnered</span>
               </div>
