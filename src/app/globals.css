@@ -214,6 +214,27 @@
 }
 
 /* ============================================================
+   CUSTOM CURSOR — hide native cursor on hover-capable devices
+   (the CursorGlow component renders a custom lime cursor instead).
+   Touch devices keep the native cursor (it never shows anyway).
+   ============================================================ */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  /* Keep native cursor inside form inputs/textareas so users get a
+     proper text caret when typing — the custom glow still follows. */
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+  select {
+    cursor: pointer;
+  }
+}
+
+/* ============================================================
    AGENCY THEME — custom utilities & animations
    Replaces medical ECG/pulse motifs with growth/dollar motifs
    ============================================================ */
