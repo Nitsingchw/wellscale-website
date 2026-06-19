@@ -1,0 +1,864 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   DYNAMIC THEME TOKENS — all colors are CSS variables so they
+   can change per-theme (dark / light).
+   Tailwind v4 reads these via `@theme inline` and generates
+   bg-* / text-* / border-* utilities that reference the vars.
+   ============================================================ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Agency custom colors — made dynamic so they flip with the theme */
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-lime: var(--lime);
+  --color-lime-foreground: var(--lime-foreground);
+  --color-lime-soft: var(--lime-soft);
+
+  /* Override Tailwind's built-in white/black to be theme-aware so
+     that `text-white`, `bg-white`, `border-white/10`, etc. adapt
+     automatically when the theme flips. */
+  --color-white: var(--white);
+  --color-black: var(--black);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============================================================
+   DARK THEME (default) — deep black + electric lime accent
+   Applied when <html> has class "dark" (or no class, via :root)
+   ============================================================ */
+
+:root,
+.dark {
+  --radius: 0.75rem;
+
+  --background: oklch(0.13 0.005 240);                /* deep black */
+  --foreground: oklch(0.95 0.02 124);                 /* near-white with lime tint */
+
+  --card: oklch(0.18 0.005 240);                      /* slightly lighter black */
+  --card-foreground: oklch(0.95 0.02 124);
+  --popover: oklch(0.18 0.005 240);
+  --popover-foreground: oklch(0.95 0.02 124);
+
+  /* Primary = electric lime (the ONLY accent color) */
+  --primary: oklch(0.88 0.21 124);                    /* vivid lime */
+  --primary-foreground: oklch(0.13 0.005 240);        /* dark text on lime */
+
+  /* Secondary = dark grey panel (still "black" family) */
+  --secondary: oklch(0.22 0.005 240);
+  --secondary-foreground: oklch(0.95 0.02 124);
+
+  --muted: oklch(0.20 0.005 240);
+  --muted-foreground: oklch(0.65 0.01 240);           /* mid-grey for body text */
+
+  /* Accent = lime (same as primary — only accent color) */
+  --accent: oklch(0.88 0.21 124);
+  --accent-foreground: oklch(0.13 0.005 240);
+
+  --destructive: oklch(0.58 0.22 25);                 /* kept for form errors only */
+
+  --border: oklch(0.28 0.005 240);                    /* dark grey border */
+  --input: oklch(0.22 0.005 240);
+  --ring: oklch(0.88 0.21 124);                       /* lime focus ring */
+
+  /* Chart palette — lime + grey shades only */
+  --chart-1: oklch(0.88 0.21 124);                    /* lime */
+  --chart-2: oklch(0.70 0.18 124);                    /* darker lime */
+  --chart-3: oklch(0.55 0.10 124);                    /* muted lime */
+  --chart-4: oklch(0.40 0.02 240);                    /* dark grey */
+  --chart-5: oklch(0.25 0.02 240);                    /* darker grey */
+
+  --sidebar: oklch(0.15 0.005 240);
+  --sidebar-foreground: oklch(0.95 0.02 124);
+  --sidebar-primary: oklch(0.88 0.21 124);
+  --sidebar-primary-foreground: oklch(0.13 0.005 240);
+  --sidebar-accent: oklch(0.22 0.005 240);
+  --sidebar-accent-foreground: oklch(0.95 0.02 124);
+  --sidebar-border: oklch(0.28 0.005 240);
+  --sidebar-ring: oklch(0.88 0.21 124);
+
+  /* === Custom agency tokens (dark theme) === */
+  --ink: oklch(0.13 0.005 240);                       /* deep black panel */
+  --ink-foreground: oklch(0.99 0 0);
+  --lime: oklch(0.88 0.21 124);                       /* vivid lime */
+  --lime-foreground: oklch(0.13 0.005 240);
+  --lime-soft: oklch(0.95 0.08 124);
+  --white: oklch(0.99 0 0);                           /* text-white = real white */
+  --black: oklch(0.13 0.005 240);
+
+  /* Shadow tokens */
+  --shadow-base: oklch(0 0 0 / 0.50);
+  --shadow-base-strong: oklch(0 0 0 / 0.60);
+  --grid-line: oklch(1 0 0 / 0.05);                   /* faint white grid line */
+  --grid-line-lime: oklch(0.88 0.21 124 / 0.08);
+}
+
+/* ============================================================
+   WHITE (LIGHT) THEME — clean white background + lime accent
+   Applied when <html> has class "light"
+   ============================================================ */
+
+.light {
+  --radius: 0.75rem;
+
+  --background: oklch(0.99 0 0);                      /* pure white */
+  --foreground: oklch(0.18 0.005 240);                /* near-black text */
+
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.18 0.005 240);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0.18 0.005 240);
+
+  /* Slightly darker lime so it pops on white */
+  --primary: oklch(0.72 0.20 124);
+  --primary-foreground: oklch(0.13 0.005 240);
+
+  --secondary: oklch(0.96 0.005 240);
+  --secondary-foreground: oklch(0.20 0.005 240);
+
+  --muted: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.45 0.01 240);
+
+  --accent: oklch(0.72 0.20 124);
+  --accent-foreground: oklch(0.13 0.005 240);
+
+  --destructive: oklch(0.58 0.22 25);
+
+  --border: oklch(0.90 0.005 240);
+  --input: oklch(0.92 0.005 240);
+  --ring: oklch(0.72 0.20 124);
+
+  --chart-1: oklch(0.72 0.20 124);
+  --chart-2: oklch(0.60 0.18 124);
+  --chart-3: oklch(0.50 0.12 124);
+  --chart-4: oklch(0.60 0.02 240);
+  --chart-5: oklch(0.40 0.02 240);
+
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.18 0.005 240);
+  --sidebar-primary: oklch(0.72 0.20 124);
+  --sidebar-primary-foreground: oklch(0.13 0.005 240);
+  --sidebar-accent: oklch(0.96 0.005 240);
+  --sidebar-accent-foreground: oklch(0.18 0.005 240);
+  --sidebar-border: oklch(0.90 0.005 240);
+  --sidebar-ring: oklch(0.72 0.20 124);
+
+  /* === Custom agency tokens (light theme — INVERTED) === */
+  --ink: oklch(0.99 0 0);                             /* ink panel = white */
+  --ink-foreground: oklch(0.18 0.005 240);
+  --lime: oklch(0.62 0.22 124);                       /* darker lime for contrast */
+  --lime-foreground: oklch(0.13 0.005 240);
+  --lime-soft: oklch(0.95 0.06 124);
+  --white: oklch(0.18 0.005 240);                     /* text-white = dark text */
+  --black: oklch(0.99 0 0);
+
+  --shadow-base: oklch(0 0 0 / 0.08);
+  --shadow-base-strong: oklch(0 0 0 / 0.14);
+  --grid-line: oklch(0 0 0 / 0.05);                   /* faint dark grid line */
+  --grid-line-lime: oklch(0.72 0.20 124 / 0.10);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ============================================================
+   AGENCY THEME — custom utilities & animations
+   Replaces medical ECG/pulse motifs with growth/dollar motifs
+   ============================================================ */
+
+/* Dot-grid pattern (campaign analytics paper) — uses lime token */
+.bg-chart-grid {
+  background-image:
+    radial-gradient(circle, color-mix(in oklch, var(--lime) 18%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-chart-grid-fine {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.bg-chart-grid-dark {
+  background-image:
+    linear-gradient(to right, var(--grid-line-lime) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-lime) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Lime glow wash — adapts to theme background */
+.bg-lime-wash {
+  background:
+    radial-gradient(ellipse at top, color-mix(in oklch, var(--lime) 12%, transparent) 0%, var(--background) 60%);
+}
+
+/* WHITE theme — keep the same lime radial wash as dark theme so the
+   green background atmosphere is preserved across both themes. The
+   lime accent uses the (darker) light-theme lime token so it still
+   reads as green rather than a yellowish stain on white. */
+.light .bg-lime-wash {
+  background:
+    radial-gradient(ellipse at top, color-mix(in oklch, var(--lime) 14%, transparent) 0%, var(--background) 60%);
+}
+
+/* In the WHITE theme, the hero's big blurred lime accent blobs are kept
+   visible (matching the dark theme) but at reduced opacity so they read
+   as soft green glows rather than harsh stains on the white background. */
+.light .blur-3xl[class*="bg-lime/"] {
+  opacity: 0.55;
+}
+
+/* Glassy agency card — uses theme tokens so it flips with the theme */
+.agency-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 1px 2px var(--shadow-base),
+    0 12px 32px -16px color-mix(in oklch, var(--lime) 25%, transparent);
+}
+
+/* Darker agency card variant — uses ink token (already theme-aware) */
+.agency-card-dark {
+  background: color-mix(in oklch, var(--ink) 85%, var(--background));
+  border: 1px solid color-mix(in oklch, var(--lime) 15%, transparent);
+  box-shadow:
+    0 1px 2px var(--shadow-base-strong),
+    0 24px 60px -20px color-mix(in oklch, var(--lime) 30%, transparent);
+}
+
+/* Glowing metric card on hover */
+.metric-glow {
+  transition: all 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.metric-glow:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--lime) 45%, transparent),
+    0 0 28px -2px color-mix(in oklch, var(--lime) 55%, transparent),
+    0 18px 44px -16px color-mix(in oklch, var(--lime) 55%, transparent);
+}
+
+/* Animated growth line — goes UP-RIGHT, like a revenue chart */
+.growth-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: growth-draw 3.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes growth-draw {
+  0%   { stroke-dashoffset: 1200; }
+  50%  { stroke-dashoffset: 0; }
+  60%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -1200; }
+}
+
+/* Rising bar (for chart bars) */
+@keyframes bar-rise {
+  0%   { transform: scaleY(0); }
+  60%  { transform: scaleY(1); }
+  100% { transform: scaleY(1); }
+}
+.bar-rise {
+  transform-origin: bottom;
+  animation: bar-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Pulsing live indicator dot */
+.live-dot {
+  position: relative;
+}
+.live-dot::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--lime) 35%, transparent);
+  animation: live-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes live-ring {
+  0%   { transform: scale(0.8); opacity: 0.9; }
+  80%  { transform: scale(1.7); opacity: 0; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* Slow drift for hero motifs */
+@keyframes drift-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%      { transform: translate3d(8px, -10px, 0) rotate(1.5deg); }
+}
+.drift-slow { animation: drift-slow 9s ease-in-out infinite; }
+
+@keyframes drift-slower {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(-12px, 8px, 0); }
+}
+.drift-slower { animation: drift-slower 12s ease-in-out infinite; }
+
+/* Slide-in confirmation card */
+@keyframes slide-in-confirm {
+  0%   { transform: translateX(110%); opacity: 0; }
+  60%  { transform: translateX(-6%); opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.slide-in-confirm {
+  animation: slide-in-confirm 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Shimmer for "live" badges */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--lime) 10%, transparent) 0%,
+    color-mix(in oklch, var(--lime) 35%, transparent) 50%,
+    color-mix(in oklch, var(--lime) 10%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.6s linear infinite;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Section anchor offset */
+.section-anchor {
+  scroll-margin-top: 88px;
+}
+
+/* Icon tick */
+@keyframes icon-tick {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+.icon-tick { animation: icon-tick 2.4s ease-in-out infinite; }
+
+/* Lime-tinted text gradient for big numbers */
+.text-gradient-lime {
+  background: linear-gradient(135deg, var(--lime-soft) 0%, var(--chart-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glow text for dark sections */
+.glow-lime {
+  text-shadow: 0 0 24px color-mix(in oklch, var(--lime) 45%, transparent);
+}
+
+/* Marquee scroll for ticker */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* ============================================================
+   TEAM SECTION — premium dark SaaS aesthetic
+   ============================================================ */
+
+/* Dark glassmorphism card */
+.team-glass {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--muted) 70%, transparent) 0%,
+    color-mix(in oklch, var(--ink) 85%, transparent) 100%
+  );
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid color-mix(in oklch, var(--lime) 18%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle inner gradient sheen */
+.team-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--lime) 6%, transparent) 0%,
+    transparent 40%,
+    transparent 60%,
+    color-mix(in oklch, var(--lime) 4%, transparent) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top-edge lime line that appears on hover */
+.team-glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklch, var(--lime) 80%, transparent),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 350ms ease;
+  z-index: 2;
+}
+
+.team-glass:hover::after {
+  opacity: 1;
+}
+
+/* Hover glow + lift */
+.team-glow {
+  transition: all 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+}
+.team-glow:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in oklch, var(--lime) 55%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--lime) 25%, transparent),
+    0 0 32px -4px color-mix(in oklch, var(--lime) 45%, transparent),
+    0 24px 60px -20px color-mix(in oklch, var(--lime) 35%, transparent),
+    0 12px 32px -8px var(--shadow-base-strong);
+}
+
+/* Smooth float animation */
+@keyframes team-float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-6px); }
+}
+.team-float {
+  animation: team-float 5s ease-in-out infinite;
+}
+.team-float-delayed {
+  animation: team-float 5s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+.team-float-slow {
+  animation: team-float 6.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+/* Background geometric orbs */
+.team-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Lime grid pattern background */
+.team-grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--lime) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--lime) 4%, transparent) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+/* Avatar ring with lime gradient */
+.team-avatar-ring {
+  background: linear-gradient(
+    135deg,
+    var(--lime) 0%,
+    var(--chart-2) 50%,
+    var(--ink) 100%
+  );
+  padding: 2px;
+  border-radius: 9999px;
+  position: relative;
+}
+.team-avatar-ring::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, color-mix(in oklch, var(--lime) 40%, transparent), transparent 60%);
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+.team-glow:hover .team-avatar-ring::before {
+  opacity: 1;
+}
+
+/* Social icon hover */
+.team-social {
+  transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.team-social:hover {
+  background: var(--lime);
+  color: var(--ink);
+  border-color: var(--lime);
+  transform: scale(1.1);
+  box-shadow: 0 0 16px color-mix(in oklch, var(--lime) 60%, transparent);
+}
+
+/* Center card highlight (featured) */
+.team-featured {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--secondary) 80%, transparent) 0%,
+    color-mix(in oklch, var(--sidebar) 90%, transparent) 100%
+  );
+  border-color: color-mix(in oklch, var(--lime) 35%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--lime) 15%, transparent),
+    0 0 48px -8px color-mix(in oklch, var(--lime) 30%, transparent),
+    0 30px 70px -20px color-mix(in oklch, var(--black) 70%, transparent);
+}
+.team-featured::after {
+  opacity: 1;
+}
+
+/* Lime accent line under heading */
+.team-accent-line {
+  height: 3px;
+  width: 64px;
+  background: linear-gradient(
+    90deg,
+    var(--lime),
+    color-mix(in oklch, var(--chart-2) 40%, transparent)
+  );
+  border-radius: 9999px;
+  box-shadow: 0 0 12px color-mix(in oklch, var(--lime) 60%, transparent);
+}
+
+/* ============================================================
+   TEAM PAGE — photo cards with hover animations
+   ============================================================ */
+
+/* Photo card container */
+.team-photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: all 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.team-photo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 40%,
+    color-mix(in oklch, var(--ink) 85%, transparent) 75%,
+    color-mix(in oklch, var(--ink) 98%, transparent) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 450ms ease;
+}
+
+/* Hover state — lift + lime glow */
+.team-photo-card:hover {
+  transform: translateY(-10px);
+  border-color: color-mix(in oklch, var(--lime) 55%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--lime) 30%, transparent),
+    0 0 40px -4px color-mix(in oklch, var(--lime) 50%, transparent),
+    0 30px 70px -20px color-mix(in oklch, var(--lime) 35%, transparent),
+    0 16px 40px -8px var(--shadow-base-strong);
+}
+
+/* Photo zoom on hover */
+.team-photo {
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 450ms ease;
+  filter: grayscale(0.3) contrast(1.05);
+}
+.team-photo-card:hover .team-photo {
+  transform: scale(1.08);
+  filter: grayscale(0) contrast(1.1);
+}
+
+/* Lime overlay tint on hover */
+.team-photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--lime) 12%, transparent) 0%,
+    transparent 50%,
+    color-mix(in oklch, var(--lime) 6%, transparent) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+.team-photo-card:hover::after {
+  opacity: 1;
+}
+
+/* Top lime accent line that appears on hover */
+.team-photo-card .team-top-line {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--lime),
+    transparent
+  );
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+.team-photo-card:hover .team-top-line {
+  opacity: 1;
+}
+
+/* Social icons — slide up on hover */
+.team-socials {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: all 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.team-photo-card:hover .team-socials {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.team-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 10px;
+  background: color-mix(in oklch, var(--ink) 70%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid color-mix(in oklch, var(--lime) 30%, transparent);
+  color: var(--foreground);
+  transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (min-width: 640px) {
+  .team-social-btn {
+    height: 36px;
+    width: 36px;
+    border-radius: 12px;
+  }
+}
+.team-social-btn:hover {
+  background: var(--lime);
+  color: var(--ink);
+  border-color: var(--lime);
+  transform: scale(1.1);
+  box-shadow: 0 0 16px color-mix(in oklch, var(--lime) 60%, transparent);
+}
+
+/* Name + role slide up on hover */
+.team-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px;
+  z-index: 4;
+  transform: translateY(0);
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (min-width: 640px) {
+  .team-info {
+    padding: 20px;
+  }
+}
+.team-photo-card:hover .team-info {
+  transform: translateY(-4px);
+}
+
+/* Bio + tags — hidden by default, reveal on hover */
+.team-bio {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  margin-top: 0;
+}
+.team-photo-card:hover .team-bio {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 8px;
+}
+
+/* On mobile (no hover): bio, tags, socials NEVER show — only name + role visible.
+   Details are desktop-hover-only. */
+@media (hover: none) {
+  /* Smaller photo zoom on mobile to leave room for info */
+  .team-photo {
+    filter: grayscale(0.15) contrast(1.05);
+  }
+  /* Force-hide bio, tags, socials on mobile — no tap reveal */
+  .team-bio,
+  .team-tags,
+  .team-socials {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    transform: translateY(-8px) !important;
+    margin-top: 0 !important;
+    pointer-events: none !important;
+  }
+  /* Override any :active or :focus-within that might try to reveal them */
+  .team-photo-card:active .team-bio,
+  .team-photo-card:focus-within .team-bio,
+  .team-photo-card.is-tapped .team-bio,
+  .team-photo-card:active .team-tags,
+  .team-photo-card:focus-within .team-tags,
+  .team-photo-card.is-tapped .team-tags,
+  .team-photo-card:active .team-socials,
+  .team-photo-card:focus-within .team-socials,
+  .team-photo-card.is-tapped .team-socials {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    transform: translateY(-8px) !important;
+    margin-top: 0 !important;
+  }
+  /* Mobile tap still gives visual feedback (lift + glow) but no content reveal */
+  .team-photo-card:active {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklch, var(--lime) 40%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--lime) 25%, transparent),
+      0 0 24px -4px color-mix(in oklch, var(--lime) 35%, transparent),
+      0 16px 40px -16px var(--shadow-base);
+  }
+}
+
+/* Focus tags */
+.team-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 450ms cubic-bezier(0.22, 1, 0.36, 1) 100ms;
+}
+.team-photo-card:hover .team-tags {
+  max-height: 80px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.team-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--lime) 12%, transparent);
+  border: 1px solid color-mix(in oklch, var(--lime) 25%, transparent);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Live status dot on photo */
+.team-live-dot {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--ink) 70%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid color-mix(in oklch, var(--lime) 30%, transparent);
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--lime);
+}
+@media (min-width: 640px) {
+  .team-live-dot {
+    top: 16px;
+    left: 16px;
+    gap: 6px;
+    padding: 4px 10px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+}
+
