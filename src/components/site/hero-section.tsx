@@ -86,7 +86,7 @@ export function HeroSection() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative overflow-hidden bg-lime-wash pt-8 lg:pt-12 pb-16 lg:pb-24"
+      className="relative overflow-hidden bg-lime-wash pt-24 lg:pt-32 pb-16 lg:pb-24"
     >
       {/* Chart-grid background */}
       <div className="absolute inset-0 bg-chart-grid-fine opacity-70 pointer-events-none" />

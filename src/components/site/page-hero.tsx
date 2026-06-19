@@ -21,7 +21,7 @@ export function PageHero({
   breadcrumbLabel: string;
 }) {
   return (
-    <section className="relative pt-8 lg:pt-12 pb-12 lg:pb-16 bg-lime-wash overflow-hidden">
+    <section className="relative pt-28 lg:pt-36 pb-12 lg:pb-16 bg-lime-wash overflow-hidden">
       {/* Chart-grid background */}
       <div className="absolute inset-0 bg-chart-grid-fine opacity-60 pointer-events-none" />
 

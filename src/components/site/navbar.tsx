@@ -75,7 +75,7 @@ export function Navbar() {
     <>
     <header
       className={cn(
-        "relative inset-x-0 top-0 z-50 transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled || !isHome
           ? "bg-ink/85 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_24px_-12px_oklch(0_0_0_/_0.5)]"
           : "bg-transparent"
