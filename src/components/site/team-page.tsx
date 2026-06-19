@@ -28,7 +28,7 @@ const TEAM: Member[] = [
     name: "Aarav Mehta",
     role: "Founder & Head of Growth",
     bio: "Started WellScale in 2021 after 7 years in performance marketing. Built the original 3X-in-30-days system. Still leads strategy for every new clinic we onboard.",
-    photo: "/team/member-1.jpg",
+    photo: "/team/custom-1.jpeg",
     focus: ["Strategy", "Meta Ads", "Clinic Onboarding"],
   },
   {
@@ -42,7 +42,7 @@ const TEAM: Member[] = [
     name: "Rohan Desai",
     role: "Head of Performance Ads",
     bio: "Manages ₹20L+ in monthly ad spend across 20+ clinic accounts. Obsessed with lead quality over lead volume. Will pause a winning campaign if the consultation rate dips.",
-    photo: "/team/member-3.jpg",
+    photo: "/team/custom-2.png",
     focus: ["Meta Ads", "Lead Quality", "ROAS"],
   },
   {
