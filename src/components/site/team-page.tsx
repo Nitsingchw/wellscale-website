@@ -49,14 +49,14 @@ const TEAM: Member[] = [
     name: "Sneha Iyer",
     role: "Lead — WhatsApp & Nurturing",
     bio: "Scripts the conversation trees that turn cold leads into walk-ins. Has built nurture sequences in 4 languages. Her reactivation flows revive 8-14% of dead leads on average.",
-    photo: "/team/member-4.jpg",
+    photo: "/team/custom-3.png",
     focus: ["WhatsApp", "Lead Reactivation", "Copywriting"],
   },
   {
     name: "Vikram Nair",
     role: "Local SEO & GMB Lead",
     bio: "Gets your clinic into the top 3 of the Google local pack for every treatment you offer. Reviews, posts, photos, schema — he tunes every signal Google watches.",
-    photo: "/team/member-5.jpg",
+    photo: "/team/custom-4.png",
     focus: ["GMB", "Local SEO", "Reviews"],
   },
   {
