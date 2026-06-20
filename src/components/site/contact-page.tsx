@@ -54,6 +54,8 @@ const CONTACT_METHODS = [
 
 export function ContactPage({ currentRoute }: { currentRoute: Route }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     whatsapp: "",
@@ -66,9 +68,42 @@ export function ContactPage({ currentRoute }: { currentRoute: Route }) {
   const update = (key: keyof typeof form, value: string) =>
     setForm((prev) => ({ ...prev, [key]: value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "3e2d0452-279c-4781-a60b-ed75cacf30b6",
+          subject: "New Strategy Call Request — WellScale Contact Page",
+          from_name: "WellScale Website",
+          name: form.name,
+          whatsapp: form.whatsapp,
+          clinic: form.clinic,
+          city: form.city,
+          treatment: form.treatment,
+          problem: form.problem,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -341,12 +376,47 @@ export function ContactPage({ currentRoute }: { currentRoute: Route }) {
                           />
                         </div>
 
+                        {error && (
+                          <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                            {error}
+                          </div>
+                        )}
+
                         <button
                           type="submit"
-                          className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-6 py-4 text-base font-bold text-lime border border-lime shadow-[0_0_0_1px_oklch(0.88_0.21_124_/_0.5),0_0_24px_-2px_oklch(0.88_0.21_124_/_0.6),0_14px_28px_-10px_oklch(0.13_0.005_240_/_0.6)] hover:shadow-[0_0_0_1px_oklch(0.88_0.21_124_/_0.8),0_0_36px_0_oklch(0.88_0.21_124_/_0.8),0_18px_36px_-10px_oklch(0.13_0.005_240_/_0.8)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                          disabled={submitting}
+                          className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-6 py-4 text-base font-bold text-lime border border-lime shadow-[0_0_0_1px_oklch(0.88_0.21_124_/_0.5),0_0_24px_-2px_oklch(0.88_0.21_124_/_0.6),0_14px_28px_-10px_oklch(0.13_0.005_240_/_0.6)] hover:shadow-[0_0_0_1px_oklch(0.88_0.21_124_/_0.8),0_0_36px_0_oklch(0.88_0.21_124_/_0.8),0_18px_36px_-10px_oklch(0.13_0.005_240_/_0.8)] hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
                         >
-                          <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                          Book My Free Strategy Call
+                          {submitting ? (
+                            <>
+                              <svg
+                                className="animate-spin h-4 w-4"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden
+                              >
+                                <circle
+                                  className="opacity-25"
+                                  cx="12"
+                                  cy="12"
+                                  r="10"
+                                  stroke="currentColor"
+                                  strokeWidth="4"
+                                />
+                                <path
+                                  className="opacity-75"
+                                  fill="currentColor"
+                                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                                />
+                              </svg>
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                              Book My Free Strategy Call
+                            </>
+                          )}
                         </button>
 
                         <p className="text-center text-xs text-white/60">
