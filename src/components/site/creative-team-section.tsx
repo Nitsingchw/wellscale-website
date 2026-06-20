@@ -16,21 +16,21 @@ type CreativeMember = {
 const FEATURED_TEAM: CreativeMember[] = [
   {
     name: "Nitish Singh",
-    role: "Founder & Head of Growth",
+    role: "Founder & Lead Automation",
     initials: "NS",
     bio: "Architect of the 3X-in-30-days system. 7+ years scaling aesthetic clinics across India.",
     gradient: "from-lime to-[oklch(0.70_0.18_124)]",
   },
   {
-    name: "Dr. Kavya Rao",
-    role: "Clinic Growth Advisor",
-    initials: "KR",
+    name: "Vishal Rajput",
+    role: "CEO & Strategy Manager",
+    initials: "VR",
     bio: "Former medical director at a 3-location aesthetic chain. The practitioner's voice on our team.",
     gradient: "from-white to-[oklch(0.70_0.02_240)]",
   },
   {
     name: "Jatin Shakrawar",
-    role: "Head of Performance Ads",
+    role: "Head of Performance Ads & CTO",
     initials: "JS",
     bio: "Manages ₹20L+ in monthly ad spend. Obsessed with lead quality over lead volume.",
     gradient: "from-[oklch(0.70_0.18_124)] to-lime",

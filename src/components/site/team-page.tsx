@@ -26,42 +26,42 @@ type Member = {
 const TEAM: Member[] = [
   {
     name: "Nitish Singh",
-    role: "Founder & Head of Growth",
+    role: "Founder & Lead Automation",
     bio: "Started WellScale in 2021 after 7 years in performance marketing. Built the original 3X-in-30-days system. Still leads strategy for every new clinic we onboard.",
     photo: "/team/custom-1.jpeg",
     focus: ["Strategy", "Meta Ads", "Clinic Onboarding"],
   },
   {
-    name: "Dr. Kavya Rao",
-    role: "Clinic Growth Advisor",
+    name: "Vishal Rajput",
+    role: "CEO & Strategy Manager",
     bio: "Former medical director at a 3-location aesthetic chain. Vetoes any campaign that wouldn't convert in a real clinic. The voice of the practitioner on our team.",
     photo: "/team/member-2.jpg",
     focus: ["Clinical Ops", "Patient Funnel", "Sales Training"],
   },
   {
     name: "Jatin Shakrawar",
-    role: "Head of Performance Ads",
+    role: "Head of Performance Ads & CTO",
     bio: "Manages ₹20L+ in monthly ad spend across 20+ clinic accounts. Obsessed with lead quality over lead volume. Will pause a winning campaign if the consultation rate dips.",
     photo: "/team/custom-2.png",
     focus: ["Meta Ads", "Lead Quality", "ROAS"],
   },
   {
     name: "Tushar Sahu",
-    role: "Lead — WhatsApp & Nurturing",
+    role: "Clinic Growth Advisor",
     bio: "Scripts the conversation trees that turn cold leads into walk-ins. Has built nurture sequences in 4 languages. Her reactivation flows revive 8-14% of dead leads on average.",
     photo: "/team/custom-3.png",
     focus: ["WhatsApp", "Lead Reactivation", "Copywriting"],
   },
   {
     name: "Samarth Pane",
-    role: "Local SEO & GMB Lead",
+    role: "Content & Brand Strategist",
     bio: "Gets your clinic into the top 3 of the Google local pack for every treatment you offer. Reviews, posts, photos, schema — he tunes every signal Google watches.",
     photo: "/team/custom-4.png",
     focus: ["GMB", "Local SEO", "Reviews"],
   },
   {
     name: "Priya Sharma",
-    role: "Content & Brand Strategist",
+    role: "Lead — WhatsApp & Nurturing",
     bio: "Architects the content calendars that make your feed sell your expertise while you sleep. Before/afters, doctor credibility, patient stories — all under her direction.",
     photo: "/team/member-6.jpg",
     focus: ["Content", "Social Media", "Brand Building"],
@@ -276,7 +276,7 @@ export function TeamPage({ currentRoute }: { currentRoute: Route }) {
                 },
                 {
                   step: "02",
-                  title: "Kavya audits your patient funnel",
+                  title: "Vishal audits your patient funnel",
                   body: "A clinic-side practitioner reviews your consultation recordings, front-desk scripts, and lead sources before we propose anything.",
                 },
                 {
