@@ -271,18 +271,18 @@ export function TeamPage({ currentRoute }: { currentRoute: Route }) {
               {[
                 {
                   step: "01",
-                  title: "Nitish runs your strategy call",
-                  body: "Your 15-minute free call goes to the founder, not a junior AE. He'll tell you whether we can 3X your clinic — and if not, why.",
+                  title: "Vishal runs your strategy call",
+                  body: "Your 15-minute free call goes to our CEO & Strategy Manager, not a junior AE. He'll tell you whether we can 3X your clinic — and if not, why.",
                 },
                 {
                   step: "02",
-                  title: "Vishal audits your patient funnel",
-                  body: "A clinic-side practitioner reviews your consultation recordings, front-desk scripts, and lead sources before we propose anything.",
+                  title: "Jatin audits your patient funnel",
+                  body: "Our Head of Performance Ads & CTO reviews your consultation recordings, front-desk scripts, and lead sources before we propose anything.",
                 },
                 {
                   step: "03",
-                  title: "Jatin + Tushar build your growth system",
-                  body: "Ads + WhatsApp nurturing go live in week 1. Samarth handles your GMB. Priya ships your content calendar.",
+                  title: "Tushar builds your growth system",
+                  body: "As Clinic Growth Advisor, Tushar designs your patient pipeline. Samarth ships your content calendar. Priya runs WhatsApp nurturing. Nitish automates the backend.",
                 },
               ].map((s, i) => (
                 <motion.div
@@ -322,7 +322,7 @@ export function TeamPage({ currentRoute }: { currentRoute: Route }) {
                   Want this team working on your clinic?
                 </h3>
                 <p className="mt-2 text-white/60">
-                  Book a free 15-minute strategy call with Nitish. He&apos;ll tell
+                  Book a free 15-minute strategy call with Vishal. He&apos;ll tell
                   you straight whether we can 3X your revenue in 30 days.
                 </p>
               </div>
