@@ -15,9 +15,9 @@ type CreativeMember = {
 // 3 featured team members for the creative staggered layout
 const FEATURED_TEAM: CreativeMember[] = [
   {
-    name: "Aarav Mehta",
+    name: "Nitish Singh",
     role: "Founder & Head of Growth",
-    initials: "AM",
+    initials: "NS",
     bio: "Architect of the 3X-in-30-days system. 7+ years scaling aesthetic clinics across India.",
     gradient: "from-lime to-[oklch(0.70_0.18_124)]",
   },
@@ -29,9 +29,9 @@ const FEATURED_TEAM: CreativeMember[] = [
     gradient: "from-white to-[oklch(0.70_0.02_240)]",
   },
   {
-    name: "Rohan Desai",
+    name: "Jatin Shakrawar",
     role: "Head of Performance Ads",
-    initials: "RD",
+    initials: "JS",
     bio: "Manages ₹20L+ in monthly ad spend. Obsessed with lead quality over lead volume.",
     gradient: "from-[oklch(0.70_0.18_124)] to-lime",
   },

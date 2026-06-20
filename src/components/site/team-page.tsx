@@ -25,7 +25,7 @@ type Member = {
 
 const TEAM: Member[] = [
   {
-    name: "Aarav Mehta",
+    name: "Nitish Singh",
     role: "Founder & Head of Growth",
     bio: "Started WellScale in 2021 after 7 years in performance marketing. Built the original 3X-in-30-days system. Still leads strategy for every new clinic we onboard.",
     photo: "/team/custom-1.jpeg",
@@ -39,21 +39,21 @@ const TEAM: Member[] = [
     focus: ["Clinical Ops", "Patient Funnel", "Sales Training"],
   },
   {
-    name: "Rohan Desai",
+    name: "Jatin Shakrawar",
     role: "Head of Performance Ads",
     bio: "Manages ₹20L+ in monthly ad spend across 20+ clinic accounts. Obsessed with lead quality over lead volume. Will pause a winning campaign if the consultation rate dips.",
     photo: "/team/custom-2.png",
     focus: ["Meta Ads", "Lead Quality", "ROAS"],
   },
   {
-    name: "Sneha Iyer",
+    name: "Tushar Sahu",
     role: "Lead — WhatsApp & Nurturing",
     bio: "Scripts the conversation trees that turn cold leads into walk-ins. Has built nurture sequences in 4 languages. Her reactivation flows revive 8-14% of dead leads on average.",
     photo: "/team/custom-3.png",
     focus: ["WhatsApp", "Lead Reactivation", "Copywriting"],
   },
   {
-    name: "Vikram Nair",
+    name: "Samarth Pane",
     role: "Local SEO & GMB Lead",
     bio: "Gets your clinic into the top 3 of the Google local pack for every treatment you offer. Reviews, posts, photos, schema — he tunes every signal Google watches.",
     photo: "/team/custom-4.png",
@@ -271,7 +271,7 @@ export function TeamPage({ currentRoute }: { currentRoute: Route }) {
               {[
                 {
                   step: "01",
-                  title: "Aarav runs your strategy call",
+                  title: "Nitish runs your strategy call",
                   body: "Your 15-minute free call goes to the founder, not a junior AE. He'll tell you whether we can 3X your clinic — and if not, why.",
                 },
                 {
@@ -281,8 +281,8 @@ export function TeamPage({ currentRoute }: { currentRoute: Route }) {
                 },
                 {
                   step: "03",
-                  title: "Rohan + Sneha build your growth system",
-                  body: "Ads + WhatsApp nurturing go live in week 1. Vikram handles your GMB. Priya ships your content calendar.",
+                  title: "Jatin + Tushar build your growth system",
+                  body: "Ads + WhatsApp nurturing go live in week 1. Samarth handles your GMB. Priya ships your content calendar.",
                 },
               ].map((s, i) => (
                 <motion.div
@@ -322,7 +322,7 @@ export function TeamPage({ currentRoute }: { currentRoute: Route }) {
                   Want this team working on your clinic?
                 </h3>
                 <p className="mt-2 text-white/60">
-                  Book a free 15-minute strategy call with Aarav. He&apos;ll tell
+                  Book a free 15-minute strategy call with Nitish. He&apos;ll tell
                   you straight whether we can 3X your revenue in 30 days.
                 </p>
               </div>
