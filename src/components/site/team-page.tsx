@@ -35,7 +35,7 @@ const TEAM: Member[] = [
     name: "Vishal Rajput",
     role: "CEO & Strategy Manager",
     bio: "Former medical director at a 3-location aesthetic chain. Vetoes any campaign that wouldn't convert in a real clinic. The voice of the practitioner on our team.",
-    photo: "/team/member-2.jpg",
+    photo: "/team/custom-5.png",
     focus: ["Clinical Ops", "Patient Funnel", "Sales Training"],
   },
   {
