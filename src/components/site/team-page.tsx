@@ -271,8 +271,8 @@ export function TeamPage({ currentRoute }: { currentRoute: Route }) {
               {[
                 {
                   step: "01",
-                  title: "Vishal runs your strategy call",
-                  body: "Your 15-minute free call goes to our CEO & Strategy Manager, not a junior AE. He'll tell you whether we can 3X your clinic — and if not, why.",
+                  title: "Your strategy call — with Vishal & Nitish",
+                  body: "Whoever's role best matches your clinic's challenge will take the call — Vishal (CEO & Strategy) or Nitish (Founder & Lead Automation). No junior AEs, no account managers. You get the people who'll actually own your growth.",
                 },
                 {
                   step: "02",
